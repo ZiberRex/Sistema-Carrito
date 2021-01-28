@@ -42,7 +42,7 @@ nav ul {
 }
 nav li {
 	display: inline-block;
-	margin: 10px 8px;
+	margin: 20px 18px;
 }
 nav li.active a,nav li  a:hover{
 	text-decoration:none;
