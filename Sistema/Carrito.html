@@ -3,7 +3,7 @@
 <head>
 
 
-<title>Hexa a portfolio bootstrap Website Template | Single-Page :: w3layouts</title>
+<title>PrestamistWeb</title>
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -47,8 +47,6 @@
 		});
 	</script>
 
-</head>
-<body>
 <div class="header_bg" id="home"><!-- start header -->
 <div class="container">
 	<div class="row header text-center specials">
@@ -69,7 +67,6 @@
 </div>
 </div>
 </head>
-<body>
 </div>
 </div>
 
@@ -82,12 +79,33 @@
 				</div>
 				<nav class="top-nav">
 					<ul class="top-nav nav_list">
+						<img src="images/Carrito.png" class="nav-link-dropdown-toggle-img-fluid" height="50px"
+						width="50px" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"></img>
+						<div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
+							<table id="lista-carrito" class="table">
+								<thead>
+									<tr>
+										<th>Imagen</th>
+										<th>Nombre</th>
+										<th>Precio</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+
+							<a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
+							<a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
+								Compra</a>
+						</div>
 						<li><a href="Inicio.html">Inicio</a></li>
 						<li class="page-scroll"><a href="Prestamos.html">Prestamos</a></li>
 						<li class="page-scroll"><a href="Calculadora.html">Calculadora de Prestamos</a></li>
 						<li class="page-scroll"><a href="Nosotros.html">Nosotros</a></li>
 						<li class="page-scroll"><a href="Contactanos.html">Contactanos</a></li>
 						<li class="page-scroll"><a href="Carrito.html">Carrito</a></li>
+						
 					</ul>
 					<a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
 				</nav>
@@ -95,36 +113,207 @@
 			</div>
 		</div>
 		</div>
-		<div class="container"><!-- start main -->
+	</head>
+	<body>
+		<div class="Carrito">
+
+		</div>
+		<div class="container" id="lista-productos"><!-- start main -->
 			<div class="main row">
 				  <h2 class="style">Subasta</h2>
 				  <div class="grids_of_4 row">
-						<div class="col-md-3 images_1_of_4">
-							<div class="fancyDemo">
-								<a rel="group" title="" href="images/motor.jpg"><img src="images/Motor.jpg" alt=""class="img-responsive"/></a>
+					<!DOCTYPE html>
+					<html lang="es">
+					<head>
+						<meta charset="UTF-8">
+						<title></title>
+						<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+						<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+						<script>
+							window.onload = function () {
+								// Variables
+								let baseDeDatos = [
+									{
+										id: 1,
+										nombre: 'Motor Electrico Honda',
+										precio: 500000,
+										imagen: 'images/Motor.jpg'
+									},
+									{
+										id: 2,
+										nombre: 'Coche Automatico Honda',
+										precio: 360000,
+										imagen: 'images/Carro.jpg'
+									},
+									{
+										id: 3,
+										nombre: 'Huawei P30 Pro',
+										precio: 15000,
+										imagen: 'images/p30.jpg'
+									}
+								
+					
+								];
+								
+								let $items = document.querySelector('#items');
+								let carrito = [];
+								let total = 0;
+								let $carrito = document.querySelector('#carrito');
+								let $total = document.querySelector('#total');
+								let $botonVaciar = document.querySelector('#boton-vaciar');
+					
+								// Funciones
+								function renderItems() {
+									for (let info of baseDeDatos) {
+										// Estructura
+										let miNodo = document.createElement('div');
+										miNodo.classList.add('card', 'col-sm-4');
+										// Body
+										let miNodoCardBody = document.createElement('div');
+										miNodoCardBody.classList.add('card-body');
+										// Titulo
+										let miNodoTitle = document.createElement('h2');
+										miNodoTitle.classList.add('card-title');
+										miNodoTitle.textContent = info['nombre'];
+										// Imagen
+										let miNodoImagen = document.createElement('img');
+										miNodoImagen.classList.add('img-fluid');
+										miNodoImagen.setAttribute('src', info['imagen']);
+										// Precio
+										let miNodoPrecio = document.createElement('h4');
+										miNodoPrecio.classList.add('card-text');
+										miNodoPrecio.textContent = info['precio'] + 'RD$';
+										// Boton 
+										let miNodoBoton = document.createElement('button',"h1");
+										miNodoBoton.classList.add('btn', 'btn-primary');
+										miNodoBoton.textContent = 'Añadir';
+										miNodoBoton.setAttribute('marcador', info['id']);
+										miNodoBoton.addEventListener('click', anyadirCarrito);
+										// Insertamos
+										miNodoCardBody.appendChild(miNodoImagen);
+										miNodoCardBody.appendChild(miNodoTitle);
+										miNodoCardBody.appendChild(miNodoPrecio);
+										miNodoCardBody.appendChild(miNodoBoton);
+										miNodo.appendChild(miNodoCardBody);
+										$items.appendChild(miNodo);
+									}
+								}
+					
+								function anyadirCarrito () {
+									// Anyadimos el Nodo a nuestro carrito
+									carrito.push(this.getAttribute('marcador'))
+									// Calculo el total
+									calcularTotal();
+									// Renderizamos el carrito 
+									renderizarCarrito();
+								}
+					
+								function renderizarCarrito() {
+									// Vaciamos todo el html
+									$carrito.textContent = '';
+									// Quitamos los duplicados
+									let carritoSinDuplicados = [...new Set(carrito)];
+									// Generamos los Nodos a partir de carrito
+									carritoSinDuplicados.forEach(function (item, indice) {
+										// Obtenemos el item que necesitamos de la variable base de datos
+										let miItem = baseDeDatos.filter(function(itemBaseDatos) {
+											return itemBaseDatos['id'] == item;
+										});
+										// Cuenta el número de veces que se repite el producto
+										let numeroUnidadesItem = carrito.reduce(function (total, itemId) {
+											return itemId === item ? total += 1 : total;
+										}, 0);
+										// Creamos el nodo del item del carrito
+										let miNodo = document.createElement('li');
+										miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
+										miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0]['nombre']} - ${miItem[0]['precio']}€`;
+										// Boton de borrar
+										let miBoton = document.createElement('button');
+										miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+										miBoton.textContent = 'X';
+										miBoton.style.marginLeft = '1rem';
+										miBoton.setAttribute('item', item);
+										miBoton.addEventListener('click', borrarItemCarrito);
+										// Mezclamos nodos
+										miNodo.appendChild(miBoton);
+										$carrito.appendChild(miNodo);
+									});
+								}
+					
+								function borrarItemCarrito() {
+									// Obtenemos el producto ID que hay en el boton pulsado
+									let id = this.getAttribute('item');
+									// Borramos todos los productos
+									carrito = carrito.filter(function (carritoId) {
+										return carritoId !== id;
+									});
+									// volvemos a renderizar
+									renderizarCarrito();
+									// Calculamos de nuevo el precio
+									calcularTotal();
+								}
+					
+								function calcularTotal() {
+									// Limpiamos precio anterior
+									total = 0;
+									// Recorremos el array del carrito
+									for (let item of carrito) {
+										// De cada elemento obtenemos su precio
+										let miItem = baseDeDatos.filter(function(itemBaseDatos) {
+											return itemBaseDatos['id'] == item;
+										});
+										total = total + miItem[0]['precio'];
+									}
+									// Formateamos el total para que solo tenga dos decimales
+									let totalDosDecimales = total.toFixed(2);
+									// Renderizamos el precio en el HTML
+									$total.textContent = totalDosDecimales;
+								}
+					
+								function vaciarCarrito() {
+									// Limpiamos los productos guardados
+									carrito = [];
+									// Renderizamos los cambios
+									renderizarCarrito();
+									calcularTotal();
+								}
+					
+								// Eventos
+								$botonVaciar.addEventListener('click', vaciarCarrito);
+					
+								// Inicio
+								renderItems();
+							} 
+						</script>
+					</head>
+					<body>
+						<div class="container">
+							<div class="row">
+								<!-- Elementos generados a partir del JSON -->
+								<main id="items" class="col-sm-8 row"></main>
+								<!-- Carrito -->
+								<aside class="col-sm-4">
+									<h2>Carrito</h2>
+									<!-- Elementos del carrito -->
+									<ul id="carrito" class="list-group"></ul>
+									<hr>
+									<!-- Precio total -->
+									<p class="text-right">Total: <span id="total"></span>&euro;</p>
+									<button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+								</aside>
 							</div>
-							 <h3>Motocicleta Electrica Honda</h3>
-							 <p class="para">500,000RD$</p>
-							 <h4><a href="single-page.html">Agregar al carrito</a> </h4>
 						</div>
-						<div class="col-md-3 images_1_of_4">
-							<div class="fancyDemo">
-								<a rel="group" title="" href="images/Carro.jpg"><img src="images/Carro.jpg" alt=""class="img-responsive"/></a>
-							</div>
-							 <h3><a href="single-page.html">Honda Civic 2010</a></h3>
-							 <p class="para">350,000RD$</p>
-							 <h4><a href="single-page.html">Agregar al carrito</a></h4>
-						</div>
-						<div class="col-md-3 images_1_of_4">
-							<div class="fancyDemo">
-								<a rel="group" title="" href="images/p30.jpg"><img src="images/p30.jpg" alt=""class="img-responsive"/></a>
-							</div>
-							 <h3><a href="single-page.html">Huawei P30</a></h3>
-							 <p class="para">15,000RD$</p>
-							 <h4><a href="single-page.html">Agregar al carrito</a></h4>
-						</div>
-	
+					</body>
+					</html>
 </div>
+<script src="js/Carrito.js"></script>
+<script src="js/pedido.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/carrito.js"></script>
+    
+
 </body>
 <footer>
 	

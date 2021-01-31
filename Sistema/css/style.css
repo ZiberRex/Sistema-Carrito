@@ -64,6 +64,17 @@ nav li  a {
 nav a#pull {
 	display: none;
 }
+/*Carrito */
+.nav-link-dropdown-toggle-img-fluid{
+padding: 0%;
+margin: 0%;
+position: absolute;
+left:;
+right:1200px;
+top:15%;
+bottom:;
+}
+/*Carrito termina */
 .specials {
 	position: relative;
 }
@@ -421,14 +432,14 @@ nav a#pull {
 /* start portfolio  */
 
 h2.style{
-	font-family: 'Kreon', serif;
+	font-family: 'serif', serif;
 	display: block;
 	text-transform: uppercase;
 	font-size: 26px;
 	background: #2EB398;
 	padding: 15px;
 	color: #ffffff;
-	margin: 4% 0;
+	margin: 2% 0;
 }
 .grids_of_4 {
 	margin-top: 2%;
@@ -813,9 +824,7 @@ h2.style{
 		top: 30px;
 		left: 30px;
 	}
-	.header_bg {
 
-	}
 	.logo{
 		display: none;
 	}
@@ -925,3 +934,4 @@ h2.style{
 		height: 40px;
 	}
 }
+
