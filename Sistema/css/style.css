@@ -69,28 +69,13 @@ nav a#pull {
 padding: 0%;
 margin: 0%;
 position: absolute;
-left:;
+left:0;
 right:1200px;
 top:15%;
-bottom:;
+bottom:0;
 }
 /*Carrito termina */
-.specials {
-	position: relative;
-}
-.specials:after {
-	content: '';
-	position: absolute;
-	width: 0;
-	height: 0;
-	border: 40px solid #323232;
-	border-bottom: 0 solid rgba(0, 0, 0, 0)!important;
-	border-right: 40px solid rgba(0, 0, 0, 0)!important;
-	border-left: 40px solid rgba(0, 0, 0, 0)!important;
-	left: 50%;
-	bottom: -40px;
-	margin-left: -45px;
-}
+
 /*Styles for screen 600px and lower*/
 @media screen and (max-width: 768px) {
 	nav { 

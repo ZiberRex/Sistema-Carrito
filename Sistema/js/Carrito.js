@@ -1,159 +1,239 @@
-cwindow.onload = function () {
-    // Variables
-    let baseDeDatos = [
-        {
-            id: 1,
-            nombre: 'Patata',
-            precio: 1,
-            imagen: 'https://source.unsplash.com/random/500x500/?potato&sig=1'
-        },
-        {
-            id: 2,
-            nombre: 'Cebolla',
-            precio: 1.2,
-            imagen: 'https://source.unsplash.com/random/500x500/?onion&sig=2'
-        },
-        {
-            id: 3,
-            nombre: 'Calabacin',
-            precio: 2.1,
-            imagen: 'https://source.unsplash.com/random/500x500/?zucchini&sig=3'
-        },
-        {
-            id: 4,
-            nombre: 'Fresas',
-            precio: 0.6,
-            imagen: 'https://source.unsplash.com/random/500x500/?burrs&sig=4'
-        }
+class Carrito {
 
-    ];
-    
-    let $items = document.querySelector('#items');
-    let carrito = [];
-    let total = 0;
-    let $carrito = document.querySelector('#carrito');
-    let $total = document.querySelector('#total');
-    let $botonVaciar = document.querySelector('#boton-vaciar');
-
-    // Funciones
-    function renderItems() {
-        for (let info of baseDeDatos) {
-            // Estructura
-            let miNodo = document.createElement('div');
-            miNodo.classList.add('card', 'col-sm-4');
-            // Body
-            let miNodoCardBody = document.createElement('div');
-            miNodoCardBody.classList.add('card-body');
-            // Titulo
-            let miNodoTitle = document.createElement('h5');
-            miNodoTitle.classList.add('card-title');
-            miNodoTitle.textContent = info['nombre'];
-            // Imagen
-            let miNodoImagen = document.createElement('img');
-            miNodoImagen.classList.add('img-fluid');
-            miNodoImagen.setAttribute('src', info['imagen']);
-            // Precio
-            let miNodoPrecio = document.createElement('p');
-            miNodoPrecio.classList.add('card-text');
-            miNodoPrecio.textContent = info['precio'] + '€';
-            // Boton 
-            let miNodoBoton = document.createElement('button');
-            miNodoBoton.classList.add('btn', 'btn-primary');
-            miNodoBoton.textContent = '+';
-            miNodoBoton.setAttribute('marcador', info['id']);
-            miNodoBoton.addEventListener('click', anyadirCarrito);
-            // Insertamos
-            miNodoCardBody.appendChild(miNodoImagen);
-            miNodoCardBody.appendChild(miNodoTitle);
-            miNodoCardBody.appendChild(miNodoPrecio);
-            miNodoCardBody.appendChild(miNodoBoton);
-            miNodo.appendChild(miNodoCardBody);
-            $items.appendChild(miNodo);
+    //Añadir producto al carrito
+    comprarProducto(e){
+        e.preventDefault();
+        //Delegado para agregar al carrito
+        if(e.target.classList.contains('agregar-carrito')){
+            const producto = e.target.parentElement.parentElement;
+            //Enviamos el producto seleccionado para tomar sus datos
+            this.leerDatosProducto(producto);
         }
     }
 
-    function anyadirCarrito () {
-        // Anyadimos el Nodo a nuestro carrito
-        carrito.push(this.getAttribute('marcador'))
-        // Calculo el total
-        calcularTotal();
-        // Renderizamos el carrito 
-        renderizarCarrito();
+    //Leer datos del producto
+    leerDatosProducto(producto){
+        const infoProducto = {
+            imagen : producto.querySelector('img').src,
+            titulo: producto.querySelector('h4').textContent,
+            precio: producto.querySelector('.precio span').textContent,
+            id: producto.querySelector('a').getAttribute('data-id'),
+            cantidad: 1
+        }
+        let productosLS;
+        productosLS = this.obtenerProductosLocalStorage();
+        productosLS.forEach(function (productoLS){
+            if(productoLS.id === infoProducto.id){
+                productosLS = productoLS.id;
+            }
+        });
+
+        if(productosLS === infoProducto.id){
+            Swal.fire({
+                type: 'info',
+                title: 'Oops...',
+                text: 'El producto ya está agregado',
+                showConfirmButton: false,
+                timer: 1000
+            })
+        }
+        else {
+            this.insertarCarrito(infoProducto);
+        }
+        
     }
 
-    function renderizarCarrito() {
-        // Vaciamos todo el html
-        $carrito.textContent = '';
-        // Quitamos los duplicados
-        let carritoSinDuplicados = [...new Set(carrito)];
-        // Generamos los Nodos a partir de carrito
-        carritoSinDuplicados.forEach(function (item, indice) {
-            // Obtenemos el item que necesitamos de la variable base de datos
-            let miItem = baseDeDatos.filter(function(itemBaseDatos) {
-                return itemBaseDatos['id'] == item;
-            });
-            // Cuenta el número de veces que se repite el producto
-            let numeroUnidadesItem = carrito.reduce(function (total, itemId) {
-                return itemId === item ? total += 1 : total;
-            }, 0);
-            // Creamos el nodo del item del carrito
-            let miNodo = document.createElement('li');
-            miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-            miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0]['nombre']} - ${miItem[0]['precio']}€`;
-            // Boton de borrar
-            let miBoton = document.createElement('button');
-            miBoton.classList.add('btn', 'btn-danger', 'mx-5');
-            miBoton.textContent = 'X';
-            miBoton.style.marginLeft = '1rem';
-            miBoton.setAttribute('item', item);
-            miBoton.addEventListener('click', borrarItemCarrito);
-            // Mezclamos nodos
-            miNodo.appendChild(miBoton);
-            $carrito.appendChild(miNodo);
+    //muestra producto seleccionado en carrito
+    insertarCarrito(producto){
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>
+                <img src="${producto.imagen}" width=100>
+            </td>
+            <td>${producto.titulo}</td>
+            <td>${producto.precio}</td>
+            <td>
+                <a href="#" class="borrar-producto fas fa-times-circle" data-id="${producto.id}"></a>
+            </td>
+        `;
+        listaProductos.appendChild(row);
+        this.guardarProductosLocalStorage(producto);
+
+    }
+
+    //Eliminar el producto del carrito en el DOM
+    eliminarProducto(e){
+        e.preventDefault();
+        let producto, productoID;
+        if(e.target.classList.contains('borrar-producto')){
+            e.target.parentElement.parentElement.remove();
+            producto = e.target.parentElement.parentElement;
+            productoID = producto.querySelector('a').getAttribute('data-id');
+        }
+        this.eliminarProductoLocalStorage(productoID);
+        this.calcularTotal();
+
+    }
+
+    //Elimina todos los productos
+    vaciarCarrito(e){
+        e.preventDefault();
+        while(listaProductos.firstChild){
+            listaProductos.removeChild(listaProductos.firstChild);
+        }
+        this.vaciarLocalStorage();
+
+        return false;
+    }
+
+    //Almacenar en el LS
+    guardarProductosLocalStorage(producto){
+        let productos;
+        //Toma valor de un arreglo con datos del LS
+        productos = this.obtenerProductosLocalStorage();
+        //Agregar el producto al carrito
+        productos.push(producto);
+        //Agregamos al LS
+        localStorage.setItem('productos', JSON.stringify(productos));
+    }
+
+    //Comprobar que hay elementos en el LS
+    obtenerProductosLocalStorage(){
+        let productoLS;
+
+        //Comprobar si hay algo en LS
+        if(localStorage.getItem('productos') === null){
+            productoLS = [];
+        }
+        else {
+            productoLS = JSON.parse(localStorage.getItem('productos'));
+        }
+        return productoLS;
+    }
+
+    //Mostrar los productos guardados en el LS
+    leerLocalStorage(){
+        let productosLS;
+        productosLS = this.obtenerProductosLocalStorage();
+        productosLS.forEach(function (producto){
+            //Construir plantilla
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <img src="${producto.imagen}" width=100>
+                </td>
+                <td>${producto.titulo}</td>
+                <td>${producto.precio}</td>
+                <td>
+                    <a href="#" class="borrar-producto fas fa-times-circle" data-id="${producto.id}"></a>
+                </td>
+            `;
+            listaProductos.appendChild(row);
         });
     }
 
-    function borrarItemCarrito() {
-        // Obtenemos el producto ID que hay en el boton pulsado
-        let id = this.getAttribute('item');
-        // Borramos todos los productos
-        carrito = carrito.filter(function (carritoId) {
-            return carritoId !== id;
+    //Mostrar los productos guardados en el LS en compra.html
+    leerLocalStorageCompra(){
+        let productosLS;
+        productosLS = this.obtenerProductosLocalStorage();
+        productosLS.forEach(function (producto){
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <img src="${producto.imagen}" width=100>
+                </td>
+                <td>${producto.titulo}</td>
+                <td>${producto.precio}</td>
+                <td>
+                    <input type="number" class="form-control cantidad" min="1" value=${producto.cantidad}>
+                </td>
+                <td id='subtotales'>${producto.precio * producto.cantidad}</td>
+                <td>
+                    <a href="#" class="borrar-producto fas fa-times-circle" style="font-size:30px" data-id="${producto.id}"></a>
+                </td>
+            `;
+            listaCompra.appendChild(row);
         });
-        // volvemos a renderizar
-        renderizarCarrito();
-        // Calculamos de nuevo el precio
-        calcularTotal();
     }
 
-    function calcularTotal() {
-        // Limpiamos precio anterior
-        total = 0;
-        // Recorremos el array del carrito
-        for (let item of carrito) {
-            // De cada elemento obtenemos su precio
-            let miItem = baseDeDatos.filter(function(itemBaseDatos) {
-                return itemBaseDatos['id'] == item;
-            });
-            total = total + miItem[0]['precio'];
+    //Eliminar producto por ID del LS
+    eliminarProductoLocalStorage(productoID){
+        let productosLS;
+        //Obtenemos el arreglo de productos
+        productosLS = this.obtenerProductosLocalStorage();
+        //Comparar el id del producto borrado con LS
+        productosLS.forEach(function(productoLS, index){
+            if(productoLS.id === productoID){
+                productosLS.splice(index, 1);
+            }
+        });
+
+        //Añadimos el arreglo actual al LS
+        localStorage.setItem('productos', JSON.stringify(productosLS));
+    }
+
+    //Eliminar todos los datos del LS
+    vaciarLocalStorage(){
+        localStorage.clear();
+    }
+
+    //Procesar pedido
+    procesarPedido(e){
+        e.preventDefault();
+
+        if(this.obtenerProductosLocalStorage().length === 0){
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'El carrito está vacío, agrega algún producto',
+                showConfirmButton: false,
+                timer: 2000
+            })
         }
-        // Formateamos el total para que solo tenga dos decimales
-        let totalDosDecimales = total.toFixed(2);
-        // Renderizamos el precio en el HTML
-        $total.textContent = totalDosDecimales;
+        else {
+            location.href = "compra.html";
+        }
     }
 
-    function vaciarCarrito() {
-        // Limpiamos los productos guardados
-        carrito = [];
-        // Renderizamos los cambios
-        renderizarCarrito();
-        calcularTotal();
+    //Calcular montos
+    calcularTotal(){
+        let productosLS;
+        let total = 0, igv = 0, subtotal = 0;
+        productosLS = this.obtenerProductosLocalStorage();
+        for(let i = 0; i < productosLS.length; i++){
+            let element = Number(productosLS[i].precio * productosLS[i].cantidad);
+            total = total + element;
+            
+        }
+        
+        igv = parseFloat(total * 0.18).toFixed(2);
+        subtotal = parseFloat(total-igv).toFixed(2);
+
+        document.getElementById('subtotal').innerHTML = "S/. " + subtotal;
+        document.getElementById('igv').innerHTML = "S/. " + igv;
+        document.getElementById('total').value = "S/. " + total.toFixed(2);
     }
 
-    // Eventos
-    $botonVaciar.addEventListener('click', vaciarCarrito);
-
-    // Inicio
-    renderItems();
-} 
+    obtenerEvento(e) {
+        e.preventDefault();
+        let id, cantidad, producto, productosLS;
+        if (e.target.classList.contains('cantidad')) {
+            producto = e.target.parentElement.parentElement;
+            id = producto.querySelector('a').getAttribute('data-id');
+            cantidad = producto.querySelector('input').value;
+            let actualizarMontos = document.querySelectorAll('#subtotales');
+            productosLS = this.obtenerProductosLocalStorage();
+            productosLS.forEach(function (productoLS, index) {
+                if (productoLS.id === id) {
+                    productoLS.cantidad = cantidad;                    
+                    actualizarMontos[index].innerHTML = Number(cantidad * productosLS[index].precio);
+                }    
+            });
+            localStorage.setItem('productos', JSON.stringify(productosLS));
+            
+        }
+        else {
+            console.log("click afuera");
+        }
+    }
+}
