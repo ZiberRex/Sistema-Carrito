@@ -73,7 +73,7 @@ $resultado = $enlace ->query("Select * from productos order by id_producto") or 
                                 <li class="page-scroll"><a href="Calculadora.html">Calculadora de Prestamos</a></li>
                                 <li class="page-scroll"><a href="Nosotros.html">Nosotros</a></li>
                                 <li class="page-scroll"><a href="Contactanos.html">Contactanos</a></li>
-                                <li class="page-scroll"><a href="index.html">Carrito</a></li>
+                                <li class="page-scroll"><a href="index.php">Carrito</a></li>
                                 </div>
                             </li>
                         </ul>

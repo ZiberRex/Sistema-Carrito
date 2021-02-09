@@ -1,3 +1,35 @@
+<?php
+    $Servidor="localhost:3360";
+    $Usuario="root";
+    $Clave="Sonic2145";
+    $BaseDeDatos="carrito";
+
+    $enlace = mysqli_connect($Servidor,$Usuario,$Clave,$BaseDeDatos);
+    if(!$enlace){
+        echo("Error al conectar");
+    }
+   
+
+?>
+<?php 
+if (isset($_POST['procesar-compra'])){
+    $id_cliente = rand(1,99); 
+    $Nombre = $_POST["nombre_cliente"];
+    $Correo = $_POST["correo_cliente"];
+    $id_producto = $_POST["id_producto"];
+    $total = $_POST["total"];
+    $sub_total = $_POST["sub_total"];
+    $IGV = $_POST["18%"];
+
+    $insertDatos="INSERT INTO Compras Values('$id_cliente','$Nombre','$Correo','$id_producto','$total','$sub_total','$IGV')";
+
+    $Ejecuntarinsertar = mysqli_query($enlace,$insertDatos);    
+    if(!$Ejecuntarinsertar){
+        echo('Error al insertar');
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +54,7 @@
         <div class="container">
             <div class="row justify-content-between mb-5">
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                    <a class="navbar-brand" href="index.html">Prestamist Web</a>
+                    <a class="navbar-brand" href="index.php">Prestamist Web</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
