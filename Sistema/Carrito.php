@@ -176,10 +176,10 @@
                 
                 <div class="card mb-4 shadow-sm">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">HP PAVILION</h4>
+                        <h4 class="my-0 font-weight-bold">Iphone X</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/hp1.jpg" class="card-img-top">
+                        <img src="img/X.jpg" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">S/. <span class="">5000</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
