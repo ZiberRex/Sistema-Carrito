@@ -1,3 +1,17 @@
+<?php
+    $Servidor="localhost:3360";
+    $Usuario="root";
+    $Clave="Sonic2145";
+    $BaseDeDatos="Formulario";
+
+    $enlace = mysqli_connect($Servidor,$Usuario,$Clave,$BaseDeDatos);
+    if(!$enlace){
+        echo("Error al conectar");
+    }
+   
+
+?>
+<?php
 <!DOCTYPE html>
 <html lang="en">
 
