@@ -11,6 +11,10 @@
    
 
 ?>
+<?php 
+$resultado = $enlace ->query("Select * from productos order by id_producto") or die($enlace -> error);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
