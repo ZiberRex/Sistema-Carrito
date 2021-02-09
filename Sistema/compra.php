@@ -11,25 +11,6 @@
    
 
 ?>
-<?php 
-if (isset($_POST['procesar-compra'])){
-    $id_cliente = rand(1,99); 
-    $Nombre = $_POST["nombre_cliente"];
-    $Correo = $_POST["correo_cliente"];
-    $id_producto = $_POST["id_producto"];
-    $total = $_POST["total"];
-    $sub_total = $_POST["sub_total"];
-    $IGV = $_POST["18%"];
-
-    $insertDatos="INSERT INTO Compras Values('$id_cliente','$Nombre','$Correo','$id_producto','$total','$sub_total','$IGV')";
-
-    $Ejecuntarinsertar = mysqli_query($enlace,$insertDatos);    
-    if(!$Ejecuntarinsertar){
-        echo('Error al insertar');
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 

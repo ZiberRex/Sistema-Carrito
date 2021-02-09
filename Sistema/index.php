@@ -13,7 +13,7 @@
 ?>
 <?php 
 $resultado = $enlace ->query("Select * from productos order by id_producto") or die($enlace -> error);
-
+if(isset)
 ?>
 <!DOCTYPE html>
 <html lang="en">
