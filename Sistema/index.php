@@ -2,7 +2,7 @@
     $Servidor="localhost:3360";
     $Usuario="root";
     $Clave="Sonic2145";
-    $BaseDeDatos="Formulario";
+    $BaseDeDatos="carrito";
 
     $enlace = mysqli_connect($Servidor,$Usuario,$Clave,$BaseDeDatos);
     if(!$enlace){
@@ -11,7 +11,6 @@
    
 
 ?>
-<?php
 <!DOCTYPE html>
 <html lang="en">
 
