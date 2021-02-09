@@ -35,7 +35,7 @@ function procesarCompra() {
             showConfirmButton: false,
             timer: 2000
         }).then(function () {
-            window.location = "Carrito.html";
+            window.location = "Carrito.php";
         })
     }
     else if (cliente.value === '' || correo.value === '') {
@@ -79,7 +79,7 @@ function procesarCompra() {
                     setTimeout(() => {
                         compra.vaciarLocalStorage();
                         enviado.remove();
-                        window.location = "index.html";
+                        window.location = "index.php";
                     }, 2000);
 
 

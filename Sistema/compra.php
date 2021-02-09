@@ -11,6 +11,9 @@
    
 
 ?>
+<?php 
+$Sumas = $enlace ->query("SELECT SUM(total*Cantidad_elegida) as resultado FROM Compras")or die($Sumas -> error);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +64,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-12 col-md-2 col-form-label h2">Correo :</label>
+                            <label for="email" class="">Correo :</label>
                             <div class="col-12 col-md-10">
                                 <input type="text" class="form-control" id="correo" placeholder="Ingresa tu correo" name="cc_to">
                             </div>
@@ -114,10 +117,10 @@
 
                         <div class="row justify-content-between">
                             <div class="col-md-4 mb-2">
-                                <a href="index.html" class="btn btn-info btn-block">Seguir comprando</a>
+                                <a href="index.php" class="btn btn-info btn-block">Seguir comprando</a>
                             </div>
                             <div class="col-xs-12 col-md-4">
-                                <button href="#" class="btn btn-success btn-block" id="procesar-compra">Realizar compra</button>
+                                <button href="index.php" class="btn btn-success btn-block" id="procesar-compra">Realizar compra</button>
                             </div>
                         </div>
                     </form>

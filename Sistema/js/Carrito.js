@@ -191,7 +191,7 @@ class Carrito {
             })
         }
         else {
-            location.href = "compra.html";
+            location.href = "compra.php";
         }
     }
 

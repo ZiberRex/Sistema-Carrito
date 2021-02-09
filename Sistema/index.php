@@ -12,8 +12,8 @@
 
 ?>
 <?php 
-$resultado = $enlace ->query("Select * from productos order by id_producto") or die($enlace -> error);
-if(isset)
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +66,7 @@ if(isset)
                                     </table>
 
                                     <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
-                                    <a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
+                                    <a href="compra.php" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
                                         Compra</a>
                                         <li><a href="Inicio.html">Inicio</a></li>
                                 <li class="page-scroll"><a href="Prestamos.html">Prestamos</a></li>
@@ -102,7 +102,7 @@ if(isset)
                     </div>
                     <div class="card-body">
                         <img src="img/X.jpg" class="card-img-top">
-                        <h1 class="card-title pricing-card-title precio"> <span class="">22,000RD$</span></h1>
+                        <h1 class="card-title pricing-card-title precio"> <span class="">22000</span>RD$</h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
@@ -120,7 +120,7 @@ if(isset)
                     </div>
                     <div class="card-body">
                         <img src="img/m51.jpg" class="card-img-top">
-                        <h1 class="card-title pricing-card-title precio"> <span class="">24,000RD$</span></h1>
+                        <h1 class="card-title pricing-card-title precio"> <span class="">24000</span>RD$</h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
@@ -138,7 +138,7 @@ if(isset)
                     </div>
                     <div class="card-body">
                         <img src="img/p30.jpg" class="card-img-top">
-                        <h1 class="card-title pricing-card-title precio"> <span class="">20,000RD$</span></h1>
+                        <h1 class="card-title pricing-card-title precio"> <span class="">20000</span>RD$</h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
