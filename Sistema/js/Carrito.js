@@ -209,9 +209,9 @@ class Carrito {
         igv = parseFloat(total * 0.18).toFixed(2);
         subtotal = parseFloat(total-igv).toFixed(2);
 
-        document.getElementById('subtotal').innerHTML = "S/. " + subtotal;
-        document.getElementById('igv').innerHTML = "S/. " + igv;
-        document.getElementById('total').value = "S/. " + total.toFixed(2);
+        document.getElementById('subtotal').innerHTML = "$ " + subtotal;
+        document.getElementById('igv').innerHTML = "$ " + igv;
+        document.getElementById('total').value = "$ " + total.toFixed(2);
     }
 
     obtenerEvento(e) {
