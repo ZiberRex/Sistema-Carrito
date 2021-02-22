@@ -1,7 +1,7 @@
 <?php
-    $Servidor="localhost:3306";
+    $Servidor="localhost:3360";
     $Usuario="root";
-    $Clave="Sucrea199";
+    $Clave="Sonic2145";
     $BaseDeDatos="carrito";
 
     $enlace = mysqli_connect($Servidor,$Usuario,$Clave,$BaseDeDatos);

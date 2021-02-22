@@ -32,7 +32,7 @@ body {
     *zoom: 1;
     margin: 0;
 }
-nav {
+nav {   
 	width: 100%;
 	position: relative;
 }
@@ -46,7 +46,7 @@ nav li {
 }
 nav li.active a,nav li  a:hover{
 	text-decoration:none;
-	color: #2EB398;
+	color: #c9b610 ;
 }
 nav li  a {
 	color: #fff;
