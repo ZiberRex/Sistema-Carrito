@@ -107,13 +107,26 @@ bottom:0;
      }
 }
 /* start footerme  */
-.footerme{
-display: block;
-padding:0%;
-margin: 0%;
 
+
+
+.Footerme {
+display: block;
+background: #333232;
+color: white;
+position:absolute;
+top:100%;
+text-align: center;
+width: 100%;
 }
-/* start slider */
+
+   
+   .span1{
+      color: #14AED6;
+   
+   }
+
+   /* start slider */
 .slider_bg{
    background: #ffffff;
 }
