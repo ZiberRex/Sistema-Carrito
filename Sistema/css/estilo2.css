@@ -46,7 +46,7 @@ nav li {
 }
 nav li.active a,nav li  a:hover{
    text-decoration:none;
-   color: #2eb34f;
+   color: #14AED6;
 }
 nav li  a {
    color: #fff;
@@ -105,6 +105,13 @@ bottom:0;
          width: 100%;
          text-indent: 25px;
      }
+}
+/* start footerme  */
+.footerme{
+display: block;
+padding:0%;
+margin: 0%;
+
 }
 /* start slider */
 .slider_bg{
@@ -417,11 +424,11 @@ bottom:0;
 /* start portfolio  */
 
 h2.style{
-   font-family: 'serif', serif;
+   font-family: 'Candara';
    display: block;
    text-transform: uppercase;
    font-size: 26px;
-   background: #2EB398;
+   background: #14AED6;
    padding: 15px;
    color: #ffffff;
    margin: 2% 0;
