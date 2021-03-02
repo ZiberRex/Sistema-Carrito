@@ -44,6 +44,12 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
+                        <li><a href="Inicio.html">Inicio</a></li>
+                                <li class="page-scroll"><a href="Prestamos.html">Prestamos</a></li>
+                                <li class="page-scroll"><a href="Calculadora.html">Calculadora de Prestamos</a></li>
+                                <li class="page-scroll"><a href="Nosotros.html">Nosotros</a></li>
+                                <li class="page-scroll"><a href="Contactanos.html">Contactanos</a></li>
+                                <li class="page-scroll"><a href="index.php">Carrito</a></li>
                             <li class="nav-item dropdown">
                                 <img src="img/cart.jpeg" class="nav-link dropdown-toggle img-fluid" height="70px"
                                     width="70px" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
@@ -64,12 +70,9 @@
                                     <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
                                     <a href="compra.php" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
                                         Compra</a>
-                                        <li><a href="Inicio.html">Inicio</a></li>
-                                <li class="page-scroll"><a href="Prestamos.html">Prestamos</a></li>
-                                <li class="page-scroll"><a href="Calculadora.html">Calculadora de Prestamos</a></li>
-                                <li class="page-scroll"><a href="Nosotros.html">Nosotros</a></li>
-                                <li class="page-scroll"><a href="Contactanos.html">Contactanos</a></li>
-                                <li class="page-scroll"><a href="index.php">Carrito</a></li>
+                                        
+                                
+                                
                                 </div>
                             </li>
                         </ul>

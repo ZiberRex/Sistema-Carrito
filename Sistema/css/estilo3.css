@@ -32,6 +32,10 @@ body {
    *zoom: 1;
    margin: 0;
 }
+.top-nav img.logo{
+    position:relative;
+    right: 1100%;
+}
 nav {   
    width: 100%;
    position: relative;
@@ -189,8 +193,8 @@ width: 100%;
    display: inline-block;
    position: relative;
    left: 25%;
-      margin-top:-150px ;
-      bottom: 158px;
+      margin-top:-160px ;
+      bottom: 231px;
    
    }
    .Servi2 img{
@@ -221,8 +225,8 @@ width: 100%;
    display: inline-block;
    position: relative;
    left: 29.3%;
-   margin-top:-150px ;
-   bottom: 158px;
+   margin-top:-160px ;
+   bottom: 231px;
 
 }
 .Servi3 img{
@@ -232,7 +236,7 @@ width: 100%;
    position: relative;
    left: 32%;
 }
-.Servi3 p{
+.Servi3 p {
  display: block;
  text-align: center;
 }
@@ -252,20 +256,18 @@ width: 100%;
    display: inline-block;
    position: relative;
    left: 31.6%;
-   margin-top:-150px ;
-   bottom: 158px;
+   margin-top:-160px ;
+   bottom: 229px;
 
 }
 .Servi4 img{
    display: block;
-   height:100px;
-   width: 100px;
    position: relative;
    left: 27%;
-   height: 123.6px;
-   width: 123.6px;
+   height: 103.6px;
+   width: 103.6px;
 }
-.Servi4 p{
+.Servi4 p {
  display: block;
  text-align: center;
 }
