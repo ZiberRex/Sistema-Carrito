@@ -76,6 +76,28 @@ bottom:0;
 }
 /*Carrito termina */
 
+/*Bakcground inicia
+ */
+
+
+
+.Backgroundinitial img{
+   height:730px;
+   width: 100%;
+   position:static;
+   backface-visibility: hidden;
+}
+.Backgroundinitial p{
+   margin: 10px;
+   padding: 10px;
+   position: relative;
+   display: block;
+   left: 36%;
+   bottom: 400px;
+   font-size: 50px;
+   margin-bottom: -100px;
+}
+
 /*Styles for screen 600px and lower*/
 @media screen and (max-width: 768px) {
    nav { 
@@ -114,7 +136,7 @@ bottom:0;
 display: block;
 background: #333232;
 color: white;
-position:absolute;
+position:relative;
 top:100%;
 text-align: center;
 width: 100%;
@@ -125,6 +147,133 @@ width: 100%;
       color: #14AED6;
    
    }
+
+
+
+/* start iamges */
+/*Servi1*/
+.Servi1{
+   padding:20px;
+      margin: 20px;
+      background-color: #f0efef;
+      width:20%;
+      height: auto;
+      display: block;
+      position: relative;
+
+}
+.Servi1 img{
+   display: block;
+   height:100px;
+   width: 100px;
+   position: relative;
+   left: 28%;
+}
+.Servi1 p{
+ display: block;
+ text-align: center;
+}
+
+.Servi1 spam{
+   color: #1b1b1b;
+}
+   
+
+/*Servi2*/
+.Servi2{
+   padding:20px;
+   margin: 20px;
+   background-color: #f0efef;
+   width:20%;
+   height: auto;
+   display: inline-block;
+   position: relative;
+   left: 25%;
+      margin-top:-150px ;
+      bottom: 158px;
+   
+   }
+   .Servi2 img{
+      display: block;
+      height:100px;
+      width: 100px;
+      position: relative;
+      left: 28%;
+   }
+   .Servi2 p{
+    display: block;
+    text-align: center;
+   }
+   
+   .Servi2 spam{
+      color: #1b1b1b;
+      
+}
+
+/*Servi3*/
+
+.Servi3{
+   padding:20px;
+   margin: 20px;
+   background-color: #f0efef;
+   width:20%;
+   height: auto;
+   display: inline-block;
+   position: relative;
+   left: 29.3%;
+   margin-top:-150px ;
+   bottom: 158px;
+
+}
+.Servi3 img{
+   display: block;
+   height:100px;
+   width: 100px;
+   position: relative;
+   left: 28%;
+}
+.Servi3 p{
+ display: block;
+ text-align: center;
+}
+
+.Servi3 spam{
+   color: #1b1b1b;
+}
+
+
+/*Servi4*/
+.Servi4{
+   padding:20px;
+   margin: 20px;
+   background-color: #f0efef;
+   width:20%;
+   height: auto;
+   display: inline-block;
+   position: relative;
+   left: 31.6%;
+   margin-top:-150px ;
+   bottom: 158px;
+
+}
+.Servi4 img{
+   display: block;
+   height:100px;
+   width: 100px;
+   position: relative;
+   left: 30%;
+   height: 123.6px;
+   width: 123.6px;
+}
+.Servi4 p{
+ display: block;
+ text-align: center;
+}
+
+.Servi4 spam{
+   color: #1b1b1b;
+}
+/* end images */
 
    /* start slider */
 .slider_bg{
