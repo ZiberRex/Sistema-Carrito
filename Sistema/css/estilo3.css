@@ -79,6 +79,19 @@ top:15%;
 bottom:0;
 }
 /*Carrito termina */
+/*Logo*/
+
+.Logo img{
+   display: inline-block;
+   padding:0px;
+   margin: 0px;
+   height: 100px;
+   width: 100px;
+}
+
+
+/*Logo end*/
+
 
 /*Bakcground inicia
  */
