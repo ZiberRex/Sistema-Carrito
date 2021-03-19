@@ -4,6 +4,7 @@
 
 
 <title>Contactanos-Prestamist</title>
+
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -102,40 +103,62 @@
 			<h1><p><strong>Web Lender</p></h1></strong>
 		</div>
 
-	<div id='wrapper'>
-		<form action='' class='form'>
-		  <p class='field required half'>
-			<label class='label required' for='name'>Nombre</label>
-			<input class='text-input' id='name' name='name' required type='text'>
-		  </p>
-		  <p class='field required half'>
-			<label class='label' for='email'>Correo Electronico</label>
-			<input class='text-input' id='email' name='email' required type='email'>
-		  </p>
-		  <p class='field'>
-			<label class='label' for='message'>Mensaje</label>
-			<textarea class='textarea' cols='50' id='message' name='message' required rows='4'></textarea>
-		  </p>
-		  <p class='field'>
-			<input class='button' type='submit' value='Enviar'>
-		  </p>
-		</form>
-	  </div>
-	  <p>Contacto: 809-809-8099 </p>
-	  <p><b>Correo Electronico:</b> PrestamistWebcontacto@gmail.com </P>
-	<footer>
-		<div class="Footerme">
-			<div class="Footer-Main">
-				<div class="Footer-Main1">
-	
-				</div>
-				<div class="Footer-Main2">
-	
-				</div>
-				<div class="Footer-Main3">
-	
-				</div>
-			</div>
+		<div class="contact_form">
+
+			<div class="formulario">      
+			  <h1>Formulario de contacto</h1>
+				
+		
+		
+				  <form action="submeter-formulario.php" method="post">       
+		
+					
+						<p>
+						  <label for="nombre" class="colocar_nombre">Nombre
+							<span class="obligatorio">*</span>
+						  </label>
+							<input type="text" name="introducir_nombre" id="nombre" required="obligatorio" placeholder="Escribe tu nombre">
+						</p>
+					  
+						<p>
+						  <label for="email" class="colocar_email">Email
+							<span class="obligatorio">*</span>
+						  </label>
+							<input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escribe tu Email">
+						</p>
+					
+						<p>
+						  <label for="telefone" class="colocar_telefono">Teléfono
+						  </label>
+							<input type="tel" name="introducir_telefono" id="telefono" placeholder="Escribe tu teléfono">
+						</p>    
+					  
+						  
+					  
+						<p>
+						  <label for="asunto" class="colocar_asunto">Asunto
+							<span class="obligatorio">*</span>
+						  </label>
+							<input type="text" name="introducir_asunto" id="assunto" required="obligatorio" placeholder="Escribe un asunto">
+						</p>    
+					  
+						<p>
+						  <label for="mensaje" class="colocar_mensaje">Mensaje
+							<span class="obligatorio">*</span>
+						  </label>                     
+						<textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio" placeholder="Deja aquí tu comentario..."></textarea> 
+						</p>                    
+					  
+						<button  name="enviar_formulario" id="enviar"><p>Enviar</p></button>
+					
+		
+						<p class="aviso">
+						  <span class="obligatorio"> * </span>los campos son obligatorios.
+						</p>          
+					
+				  </form>
+			</div>  
+		  </div>
 			<div class="Footerbottom">
 				<p>
 					&copy;CopyRight 2020 All rights reserved <span class="span1">PrestamistWeb </span>
